@@ -13,10 +13,10 @@ always@(posedge clk)begin
 
 
     if(wr)
-        registers[rd]<=write_data;
+        registers[rd]=write_data;
     else begin
-        out1<=registers[r1];
-        out2<=registers[r2];
+        out1=registers[r1];
+        out2=registers[r2];
     end
         
 end

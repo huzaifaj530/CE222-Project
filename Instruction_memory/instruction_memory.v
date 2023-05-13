@@ -9,7 +9,7 @@ always@(posedge clk)
 begin
 	imemory[0]=32'b00000000000100010000000010110011; // add x1 x1 x2
 
-	instruction<=imemory[read_addr];
+	instruction=imemory[read_addr];
 end
 
 endmodule
