@@ -1,28 +1,6 @@
 `timescale 1ns / 1ps
 `include "ProgramCounter.v"
 
-////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer:
-//
-// Create Date:   12:36:17 04/10/2023
-// Design Name:   ProgramCounter
-// Module Name:   C:/Users/DSA Lab/Desktop/2021234/Lab_9/PC_TB.v
-// Project Name:  Lab_9
-// Target Device:  
-// Tool versions:  
-// Description: 
-//
-// Verilog Test Fixture created by ISE for module: ProgramCounter
-//
-// Dependencies:
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-////////////////////////////////////////////////////////////////////////////////
-
 module PC_TB;
 
 	// Inputs
