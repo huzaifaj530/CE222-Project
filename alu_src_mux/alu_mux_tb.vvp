@@ -1,0 +1,74 @@
+#! /c/iverilog/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision - 12;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_010836A8 .scope module, "alu_mux_tb" "alu_mux_tb" 2 4;
+ .timescale -9 -12;
+v0108E908_0 .var "alu_src", 0 0;
+v0108E960_0 .var "clk", 0 0;
+v0108E9B8_0 .var "imm", 20 0;
+v0108EA10_0 .net "out", 31 0, v0108E858_0; 1 drivers
+v0108EA68_0 .var "reg2", 31 0;
+S_01082AF8 .scope module, "uut" "alu_mux" 2 12, 3 3, S_010836A8;
+ .timescale -9 -12;
+v01082B80_0 .net "alu_src", 0 0, v0108E908_0; 1 drivers
+v01082BD8_0 .net "clk", 0 0, v0108E960_0; 1 drivers
+v0108E800_0 .net "imm", 20 0, v0108E9B8_0; 1 drivers
+v0108E858_0 .var "out", 31 0;
+v0108E8B0_0 .net "reg2", 31 0, v0108EA68_0; 1 drivers
+E_00F42030 .event posedge, v01082BD8_0;
+    .scope S_01082AF8;
+T_0 ;
+    %wait E_00F42030;
+    %load/v 8, v01082B80_0, 1;
+    %mov 9, 0, 2;
+    %cmpi/u 8, 1, 3;
+    %jmp/0xz  T_0.0, 4;
+    %load/v 8, v0108E800_0, 21;
+    %mov 29, 0, 11;
+    %set/v v0108E858_0, 8, 32;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v01082B80_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_0.2, 4;
+    %load/v 8, v0108E8B0_0, 32;
+    %set/v v0108E858_0, 8, 32;
+T_0.2 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_010836A8;
+T_1 ;
+    %delay 1000, 0;
+    %load/v 8, v0108E960_0, 1;
+    %inv 8, 1;
+    %set/v v0108E960_0, 8, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_010836A8;
+T_2 ;
+    %vpi_call 2 17 "$dumpfile", "alu_mux.vcd";
+    %vpi_call 2 18 "$dumpvars", 1'sb0, S_010836A8;
+    %set/v v0108E960_0, 0, 1;
+    %movi 8, 20, 21;
+    %set/v v0108E9B8_0, 8, 21;
+    %movi 8, 15, 32;
+    %set/v v0108EA68_0, 8, 32;
+    %delay 3000, 0;
+    %set/v v0108E908_0, 0, 1;
+    %delay 2000, 0;
+    %set/v v0108E908_0, 1, 1;
+    %delay 2000, 0;
+    %vpi_call 2 25 "$finish";
+    %end;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "alu_mux_tb.v";
+    "./alu_mux.v";

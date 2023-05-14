@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module ProgramCounter(
 input clk,reset,
-input [19:0]offset,
+input [20:0]offset,
 input branch,
 output reg [15:0] count
 );
