@@ -13,11 +13,15 @@ always@(posedge clk)begin
     registers[0]=0;// register 0 stays 0
 
 
-    registers[1]=2;
-    registers[2]=4;
-    registers[3]=5;
-    registers[4]=4;
-    registers[5]=7;
+    //Temp data for debug
+	registers[1]=5;
+	registers[2]=6;
+	registers[3]=1;
+	registers[4]=2;
+	registers[5]=11;
+	registers[6]=1;
+	registers[7]=3;
+	registers[8]=4;
 
     if(wr)
         registers[rd]=write_data;

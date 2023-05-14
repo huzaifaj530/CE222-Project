@@ -23,7 +23,7 @@ initial begin
 
     clk=0;reset=1;#2;
     reset=0;
-    #20;
+    #25;
 
     $finish;
 

@@ -14,17 +14,21 @@ output reg [31:0] read_data;
 always@(*)begin
 
 
-	memory[0]=8'h02;
-	memory[1]=8'h02;
-	memory[2]=8'h02;
-	memory[3]=8'h02;
+	//Temp data for debug
+    memory[0]=8'h0;
+    memory[1]=8'h0;
+    memory[2]=8'h1;
+    memory[3]=8'h0;//h0100 = 256
 
-	memory[4]=9;
-	memory[5]=7;
-	memory[6]=2;
-	memory[7]=6;
+    memory[4]=8'h0;
+    memory[5]=8'ha;
+    memory[6]=8'h0;
+    memory[7]=8'h1;//h10a0 = 4256
 
-	memory[10]=99;
+    memory[8]=8'h0;
+    memory[9]=8'h7;
+    memory[10]=8'h2;
+    memory[11]=8'h3;//h3270 = 12912
 
 	case(size)
 	0:begin
