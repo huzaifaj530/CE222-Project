@@ -28,17 +28,14 @@
 // output reg [31:0] out1,out2// 
 // );
 
-module processor();
+module processor(clk,reset,alu_result);
 
 //inputs
 input clk,reset;
-// input zero_flag;
-// input branch;
-// input [1:0] mem_to_reg;
-// input [20:0] immediate;
-// input [31:0]reg_out1;
+output [31:0] alu_result;
 
-//output PC->inst_memory input
+assign alu_result=result;
+
 
 wire [9:0] pc;
 ProgramCounter PC1 (clk,reset,imm,branch,out1,mem_to_reg,zero_flag,pc);

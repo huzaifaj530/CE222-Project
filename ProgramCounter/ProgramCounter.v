@@ -39,7 +39,7 @@ always@(posedge clk)begin
 	else if(branch || mem_to_reg==2'b10 )//Btype or jal
 		count=count+offset;//pc + immediate
 	else
-		count=count+4;//pc +4
+		count=count+1;//pc +4
 
 end
 

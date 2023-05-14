@@ -15,7 +15,7 @@ always @(posedge clk) begin
     else if(mem_to_reg==0)
         out=alu_result;
     else if(mem_to_reg==2 || mem_to_reg==3)
-        out=pc+4;//pc+4
+        out=pc+1;//pc+4
 end
 
 
