@@ -6,11 +6,13 @@ module PC_TB;
 	// Inputs
 	reg clk;
 	reg reset;
-	reg [19:0] offset;
+	reg [1:0]mem_to_reg;
+	reg [20:0] offset;
+	reg [31:0]reg_out1;
 	reg branch;
 
 	// Outputs
-	wire [15:0] count;
+	wire [9:0] count;
 
 	// Instantiate the Unit Under Test (UUT)
 	ProgramCounter uut (
@@ -18,6 +20,8 @@ module PC_TB;
 		.reset(reset), 
 		.offset(offset),
 		.branch(branch),
+		.reg_out1(reg_out1),
+		.mem_to_reg(mem_to_reg),
 		.count(count)
 		
 	);
@@ -27,16 +31,13 @@ always#1clk=~clk;
 		$dumpfile("ProgramCounter.vcd");
         $dumpvars(0,PC_TB);
 		// Initialize Inputs
-		clk = 0;reset = 1;branch=0;offset=0;
+		clk = 0;reset = 1;branch=0;offset=0;#2;
 		
-		#2;
-		reset=0;
-		offset=24;
-		branch=1;
-		#5;
-		branch=0;offset=0;
-		#5
-		reset=0;
+
+		reset=0;offset=24;branch=1;#2;
+
+
+		branch=1;mem_to_reg=2'b11;offset=12;reg_out1=4;#5;
 		#2;
 		
 

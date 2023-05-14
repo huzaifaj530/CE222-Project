@@ -1,5 +1,5 @@
 $date
-	Sat May 13 16:02:14 2023
+	Sun May 14 12:40:11 2023
 $end
 $version
 	Icarus Verilog
@@ -8,96 +8,89 @@ $timescale
 	1ps
 $end
 $scope module PC_TB $end
-$var wire 16 ! count [15:0] $end
+$var wire 10 ! count [9:0] $end
 $var reg 1 " branch $end
 $var reg 1 # clk $end
-$var reg 20 $ offset [19:0] $end
-$var reg 1 % reset $end
+$var reg 2 $ mem_to_reg [1:0] $end
+$var reg 21 % offset [20:0] $end
+$var reg 32 & reg_out1 [31:0] $end
+$var reg 1 ' reset $end
 $scope module uut $end
-$var wire 1 & branch $end
-$var wire 1 ' clk $end
-$var wire 20 ( offset [19:0] $end
-$var wire 1 ) reset $end
-$var reg 16 * count [15:0] $end
+$var wire 1 ( branch $end
+$var wire 1 ) clk $end
+$var wire 2 * mem_to_reg [1:0] $end
+$var wire 21 + offset [20:0] $end
+$var wire 32 , reg_out1 [31:0] $end
+$var wire 1 - reset $end
+$var reg 10 . count [9:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+bx .
+1-
+bx ,
+b0 +
 bx *
-1)
-b0 (
-0'
-0&
-1%
-b0 $
+0)
+0(
+1'
+bx &
+b0 %
+bx $
 0#
 0"
 bx !
 $end
 #1000
-b100 *
-b100 !
+b0 .
+b0 !
 1#
-1'
+1)
 #2000
 0#
-0'
-1"
-1&
-b11000 $
-b11000 (
-0%
 0)
+1"
+1(
+b11000 %
+b11000 +
+0'
+0-
 #3000
-b11100 *
-b11100 !
+b11000 .
+b11000 !
 1#
-1'
+1)
 #4000
 0#
-0'
+0)
+b100 &
+b100 ,
+b1100 %
+b1100 +
+b11 $
+b11 *
 #5000
-b110100 *
-b110100 !
+b10000 .
+b10000 !
 1#
-1'
+1)
 #6000
 0#
-0'
+0)
 #7000
-b111000 *
-b111000 !
 1#
-1'
-b0 $
-b0 (
-0"
-0&
+1)
 #8000
 0#
-0'
+0)
 #9000
-b111100 *
-b111100 !
 1#
-1'
+1)
 #10000
 0#
-0'
+0)
 #11000
-b1000000 *
-b1000000 !
 1#
-1'
-#12000
-0#
-0'
-#13000
-b1000100 *
-b1000100 !
-1#
-1'
-#14000
-0#
-0'
+1)
