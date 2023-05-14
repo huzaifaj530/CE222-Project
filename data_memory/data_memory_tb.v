@@ -6,6 +6,7 @@ module data_memory_tb;
 	// Inputs
 	reg clk;
 	reg [31:0] address;
+	reg size;
 	reg [31:0] write_data;
 	reg mem_rd;
 	reg mem_wr;
@@ -16,6 +17,7 @@ module data_memory_tb;
 	// Instantiate the Unit Under Test (UUT)
 	data_memory uut (
 		.read_data(read_data), 
+		.size(size),
 		.clk(clk), 
 		.address(address), 
 		.write_data(write_data), 
@@ -33,13 +35,18 @@ always#1clk=~clk;
 		write_data = 0;
 		mem_rd = 0;
 		mem_wr = 0;
+		//byte
+		size=0;
+		write_data=277;
+		mem_wr=1;mem_rd=0;#5// writes
+		mem_rd=1;mem_wr=0;#5//reads
 
-		repeat(32)begin
-			write_data=address+1;
-			mem_wr=1;mem_rd=0;#5// writes
-			mem_rd=1;mem_wr=0;#5//reads
-			address=address+1;
-		end
+		//word
+		address=277;
+		size=1;
+		mem_wr=1;mem_rd=0;#5// writes
+		mem_rd=1;mem_wr=0;#5//reads
+
 
 		$finish;
 

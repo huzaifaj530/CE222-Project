@@ -9,6 +9,7 @@ module PC_TB;
 	reg [1:0]mem_to_reg;
 	reg [20:0] offset;
 	reg [31:0]reg_out1;
+	reg zero_flag;
 	reg branch;
 
 	// Outputs
@@ -22,6 +23,7 @@ module PC_TB;
 		.branch(branch),
 		.reg_out1(reg_out1),
 		.mem_to_reg(mem_to_reg),
+		.zero_flag(zero_flag),
 		.count(count)
 		
 	);
@@ -40,10 +42,8 @@ always#1clk=~clk;
 		branch=1;mem_to_reg=2'b11;offset=12;reg_out1=4;#5;
 		#2;
 		
-
-		// Wait 100 ns for global reset to finish
 	$finish;        
-		// Add stimulus here
+		
 
 	end
       
