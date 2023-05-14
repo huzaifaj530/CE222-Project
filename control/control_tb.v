@@ -6,11 +6,10 @@ module control_tb;
     reg clk;
     reg  [6:0] opcode;
     wire alu_src,branch,mem_read,reg_write,mem_write;
-    wire [2:0]alu_op;
     wire [1:0]mem_to_reg;
 
 
-    control uut(alu_src,branch,mem_read,mem_to_reg,reg_write,mem_write,alu_op,opcode, clk);
+    control uut(alu_src,branch,mem_read,mem_to_reg,reg_write,mem_write,opcode, clk);
 
 always#1clk=~clk;
     initial begin

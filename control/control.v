@@ -1,10 +1,9 @@
 `timescale 1ns / 1ps
 
-module control(alu_src,branch,mem_read,mem_to_reg,reg_write,mem_write,alu_op,opcode, clk);
+module control(alu_src,branch,mem_read,mem_to_reg,reg_write,mem_write,opcode, clk);
 input clk;
 input  [6:0] opcode;
 output reg alu_src,branch,mem_read,reg_write,mem_write;
-output reg [2:0]alu_op;
 output reg [1:0]mem_to_reg;// for adding jal and jalr
 
 parameter r_type=7'b0110011;// add sub etc
@@ -24,7 +23,6 @@ always@(posedge clk or opcode)begin
 		mem_read=0;
 		mem_write=0;
 		branch=0;
-		alu_op=2'b10;
 	end
 	s_type:begin
 		alu_src=1;
@@ -33,7 +31,6 @@ always@(posedge clk or opcode)begin
 		mem_read=0;
 		mem_write=1;
 		branch=0;
-		alu_op=2'b00;
 	end
 
     i_type:begin
@@ -43,7 +40,6 @@ always@(posedge clk or opcode)begin
 		mem_read=0;
 		mem_write=0;
 		branch=0;
-		alu_op=2'b00;
 	end
 
 
@@ -54,7 +50,6 @@ always@(posedge clk or opcode)begin
 		mem_read=1;
 		mem_write=0;
 		branch=0;
-		alu_op=2'b00;
 	end
 	
 	b_type:begin
@@ -64,7 +59,6 @@ always@(posedge clk or opcode)begin
 		mem_read=0;
 		mem_write=0;
 		branch=1;
-		alu_op=2'b01;
 	end
     jal_type:
     begin
@@ -74,7 +68,6 @@ always@(posedge clk or opcode)begin
 		mem_read=0;
 		mem_write=0;
 		branch=1;
-		alu_op=2'b11;
     end
     jalr_type:
     begin
@@ -84,7 +77,6 @@ always@(posedge clk or opcode)begin
 		mem_read=0;
 		mem_write=0;
 		branch=1;
-		alu_op=2'b11;
     end
 
 	endcase

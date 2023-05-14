@@ -21,11 +21,8 @@ always#1clk=~clk;
         $dumpfile("instruction_memory.vcd");
         $dumpvars(0,instruction_memory_tb);
 		// Initialize Inputs
-		clk = 1;
-		read_addr = 0;
+		clk = 1;read_addr = 0;
 		#5;
-		
-		
 		
 		$finish;
         
