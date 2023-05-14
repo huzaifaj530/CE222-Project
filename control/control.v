@@ -69,7 +69,7 @@ always@(posedge clk or opcode)begin
     jal_type:
     begin
         alu_src=0;
-		mem_to_reg=2'b00;
+		mem_to_reg=2'b10;
 		reg_write=1;
 		mem_read=0;
 		mem_write=0;
@@ -79,7 +79,7 @@ always@(posedge clk or opcode)begin
     jalr_type:
     begin
         alu_src=1;
-		mem_to_reg=2'b00;
+		mem_to_reg=2'b11;
 		reg_write=1;
 		mem_read=0;
 		mem_write=0;
