@@ -19,9 +19,9 @@ parameter b_type=7'b1100011;//beq bge blt
 parameter jal_type=7'b1101111;// jal
 parameter jalr_type=7'b1100111;//jalr
 
-always @(posedge clk) begin
+always @(*) begin
     
-    func3=0;func7=0;imm=0;r1=0;r2=0;rd=0;// to remove garbage value
+    func3=3'bx;func7=7'bx;imm=0;r1=5'bx;r2=5'bx;rd=5'bx;// to remove garbage value
     opcode=instruction[6:0];
     size=1;//default size is word 
     case (opcode)

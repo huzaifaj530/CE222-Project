@@ -14,7 +14,7 @@ parameter b_type=7'b1100011;//beq bge blt
 parameter jal_type=7'b1101111;// jal
 parameter jalr_type=7'b1100111;//jalr
 
-always@(posedge clk or opcode)begin
+always@(*)begin
 	case(opcode)
 	r_type:begin
 		alu_src=0;

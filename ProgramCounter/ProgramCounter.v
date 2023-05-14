@@ -29,7 +29,7 @@ output reg [9:0] count
 );
 
 
-always@(negedge clk)begin
+always@(posedge clk)begin
 	if(reset)
 		count=0;
 	else if(branch &&zero_flag && mem_to_reg==2'bx)

@@ -8,7 +8,7 @@ input [31:0] reg2;
 input [20:0]imm;
 output reg [31:0] out;
 
-always @(posedge clk) begin
+always @(*) begin
     if(alu_src==1)
         out=imm;
     else if(alu_src==0)

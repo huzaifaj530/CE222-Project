@@ -8,7 +8,7 @@ input [2:0] alu_control;
 output reg zero_flag;
 output reg [31:0] out;
 
-always@(posedge clk)
+always@(*)
 begin
 	case(alu_control)
 	3'b000:
