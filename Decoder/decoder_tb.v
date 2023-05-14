@@ -10,8 +10,9 @@ wire [6:0] func7;// func7 part
 wire [6:0] opcode;//opcode part
 wire [4:0] r1,r2,rd;// address of r1,r2,rd
 wire [20:0] imm;//maximum imm can be 20 
+wire size;
 
-decoder uut(clk,instruction,func3,func7,opcode,r1,r2,rd,imm);
+decoder uut(clk,instruction,func3,func7,opcode,r1,r2,rd,imm,size);
     
 always#1clk=~clk;
 initial begin
