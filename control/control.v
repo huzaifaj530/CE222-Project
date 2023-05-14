@@ -4,7 +4,7 @@ module control(alu_src,branch,mem_read,mem_to_reg,reg_write,mem_write,alu_op,opc
 input clk;
 input  [6:0] opcode;
 output reg alu_src,branch,mem_read,reg_write,mem_write;
-output reg [1:0]alu_op;
+output reg [2:0]alu_op;
 output reg [1:0]mem_to_reg;// for adding jal and jalr
 
 parameter r_type=7'b0110011;// add sub etc

@@ -6,7 +6,7 @@ input clk;
 input [1:0]mem_to_reg;
 input [31:0] alu_result;
 input [31:0] mem_data;
-input [31:0]pc;
+input [9:0]pc;
 output reg [31:0] out;
 
 always @(posedge clk) begin

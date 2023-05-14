@@ -6,7 +6,7 @@ module control_tb;
     reg clk;
     reg  [6:0] opcode;
     wire alu_src,branch,mem_read,reg_write,mem_write;
-    wire [1:0]alu_op;
+    wire [2:0]alu_op;
     wire [1:0]mem_to_reg;
 
 

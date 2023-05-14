@@ -24,7 +24,7 @@ input [20:0]offset,
 input branch,
 input [31:0]reg_out1,
 input [1:0]mem_to_reg,
-input zero_flag;
+input zero_flag,
 output reg [9:0] count
 );
 

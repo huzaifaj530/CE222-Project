@@ -1,6 +1,6 @@
 module instruction_memory(clk,read_addr,instruction);
 input clk;
-input [31:0] read_addr;
+input [9:0] read_addr;
 output reg [31:0] instruction;
 reg [31:0] imemory [1023:0];
 

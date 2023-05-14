@@ -29,16 +29,75 @@
 // );
 
 module processor();
+
+//inputs
 input clk,reset;
-input zero_flag;
-input branch;
-input [1:0] mem_to_reg;
-input [20:0] immediate;
-input [31:0]reg_out1;
+// input zero_flag;
+// input branch;
+// input [1:0] mem_to_reg;
+// input [20:0] immediate;
+// input [31:0]reg_out1;
+
+//output PC->inst_memory input
+
+wire [9:0] pc;
+ProgramCounter PC1 (clk,reset,imm,branch,out1,mem_to_reg,zero_flag,pc);
+
+// instruction memory output-> decoder input
+wire [31:0]instruction;
+
+instruction_memory INSTRUCTION_MEMORY(clk,pc,instruction);
+
+//decoder outputs ->regile,control,alu_control.
+wire [2:0]func3;
+wire [6:0]func7;
+wire [6:0]opcode;
+wire [4:0]r1;
+wire [4:0]r2;
+wire [4:0]rd;
+wire [20:0]imm;
+wire size;
+
+decoder DECODER (clk,instruction,func3,func7,opcode,r1,r2,rd,imm,size);
+
+//control outputs
+
+wire mem_read;
+wire mem_write;
+wire alu_src;
+wire reg_write;
+wire [1:0] mem_to_reg;
+wire [2:0] alu_op;
+
+control CONTROL (alu_src,branch,mem_read,mem_to_reg,reg_write,mem_write,alu_op,opcode,clk);
+
+//alu control
+alu_control ALU_C(clk,func3,func7,opcode,alu_op);
 
 
+//regfile output
+wire [31:0] out1;
+wire [31:0] out2;
+
+reg_file REG_FILE(clk,reg_write,r1,r2,rd,write_data,out1,out2);
 
 
+//mux alu src
+alu_mux ALU_MUX(clk,alu_src,out2,imm,out2);
 
-    
+//alu outputs
+wire zero_flag;
+wire [31:0]result;
+
+alu ALU(clk,out1,out2,result,alu_op,zero_flag);
+
+//data memory 
+wire [31:0] data_out;
+data_memory DATA_MEMORY(data_out,size,clk,result,out2,mem_read,mem_write);
+//(read_data,size,clk,address,write_data,mem_rd,mem_wr
+//mem to reg mux
+wire[31:0]write_data;
+mem_mux MEM_MUX(clk,mem_to_reg,result,data_out,pc,write_data);
+
+
 endmodule
