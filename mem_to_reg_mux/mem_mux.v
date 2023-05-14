@@ -1,11 +1,12 @@
 `timescale 1ns/1ps
 
 
-module mem_mux(clk,mem_to_reg,alu_result,mem_data,out);
+module mem_mux(clk,mem_to_reg,alu_result,mem_data,pc,out);
 input clk;
-input mem_to_reg;
+input [1:0]mem_to_reg;
 input [31:0] alu_result;
 input [31:0] mem_data;
+input [31:0]pc;
 output reg [31:0] out;
 
 always @(posedge clk) begin
@@ -13,6 +14,8 @@ always @(posedge clk) begin
         out=mem_data;
     else if(mem_to_reg==0)
         out=alu_result;
+    else if(mem_to_reg==2 || mem_to_reg==3)
+        out=pc+4;//pc+4
 end
 
 
