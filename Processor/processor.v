@@ -28,7 +28,7 @@
 // output reg [31:0] out1,out2// 
 // );
 
-module processor(clk,reset,instr,pc_out,imm_out,alu_control,reg_out1,reg_out2,alu_result,read_data);
+module processor(clk,reset,instr,pc_out,imm_out,alu_control,reg_out1,reg_out2,alu_result,flag,read_data);
 
 //inputs
 input clk,reset;
@@ -39,6 +39,7 @@ output [2:0]alu_control;
 output [31:0]reg_out1;
 output [31:0]reg_out2;
 output [31:0]alu_result;
+output flag;
 output [31:0]read_data;
 
 assign instr=instruction;
@@ -49,6 +50,7 @@ assign reg_out1=out1;
 assign reg_out2=out2;
 assign alu_result=result;
 assign read_data=data_out;
+assign flag=zero_flag;
 
 wire [9:0] pc;
 ProgramCounter PC1 (clk,reset,imm,branch,out1,mem_to_reg,zero_flag,pc);
@@ -105,7 +107,7 @@ alu ALU(clk,out1,selected,result,alu_op,zero_flag);
 //data memory 
 wire [31:0] data_out;
 data_memory DATA_MEMORY(data_out,size,clk,result,out2,mem_read,mem_write);
-//(read_data,size,clk,address,write_data,mem_rd,mem_wr
+
 //mem to reg mux
 wire[31:0]write_data;
 mem_mux MEM_MUX(clk,mem_to_reg,result,data_out,pc,write_data);

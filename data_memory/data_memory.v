@@ -36,15 +36,19 @@ always@(*)begin
 	1:
 	begin
 		if(mem_rd==1)
+		begin
 		read_data[7:0]=memory[address];
 		read_data[15:8]=memory[address+1];
 		read_data[23:16]=memory[address+2];
 		read_data[31:24]=memory[address+3];
+		end
 		if(mem_wr==1)
+		begin
 		memory[address]=write_data[7:0];
 		memory[address+1]=write_data[15:8];
 		memory[address+2]=write_data[23:16];
 		memory[address+3]=write_data[31:24];
+		end
 	end
 	endcase
 end

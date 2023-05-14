@@ -54,7 +54,7 @@ always@(*)begin
 	
 	b_type:begin
 		alu_src=0;
-		mem_to_reg=2'bxx;
+		mem_to_reg=2'bx;
 		reg_write=0;
 		mem_read=0;
 		mem_write=0;

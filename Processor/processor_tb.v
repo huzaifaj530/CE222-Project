@@ -11,9 +11,10 @@ wire [2:0]alu_control;
 wire [31:0]reg_out1;
 wire [31:0]reg_out2;
 wire [31:0]alu_result;
+wire flag;
 wire [31:0]read_data;
 
-processor uut(clk,reset,instr,pc_out,imm_out,alu_control,reg_out1,reg_out2,alu_result,read_data);
+processor uut(clk,reset,instr,pc_out,imm_out,alu_control,reg_out1,reg_out2,alu_result,flag,read_data);
 
 always#1clk=~clk;
 initial begin
